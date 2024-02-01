@@ -1,0 +1,3 @@
+INDEX VERSION 1.4+/Users/yed0/Development/STS3_work/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1356952751.index
+849331019.index
