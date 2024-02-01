@@ -1,0 +1,7 @@
+prefix + file이름 + suffix
+
+-> /WEB-INF/views/home.jsp
+
+RequestMapping, GetMapping/PostMapping 차이
+	- RequestMapping : 클래스와 메서드에서 모드 사용
+	- Get/PostMapping: 메서드에서만 사용 

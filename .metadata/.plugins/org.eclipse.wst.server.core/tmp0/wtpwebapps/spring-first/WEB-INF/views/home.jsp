@@ -10,6 +10,6 @@
 	<h1>Hello world!</h1>
 
 	<P>The time on the server is ${serverTime}.</P>
-	<a href = "first">페이지 이동</a> <!-- jsp 파일의 이름 (form action=""도 동일) -->
+	<a href = "first">[페이지 이동]</a> <!-- jsp 파일의 이름 (form action=""도 동일) -->
 </body>
 </html>

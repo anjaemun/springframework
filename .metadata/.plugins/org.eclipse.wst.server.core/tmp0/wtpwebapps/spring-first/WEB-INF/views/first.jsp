@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>First</title>
 </head>
 <body>
 	<h2>첫번째 이동한 페이지!!</h2>
+	<a href = "second">[페이지 이동]</a>
 </body>
 </html>
