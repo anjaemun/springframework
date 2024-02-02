@@ -18,5 +18,5 @@
 <p> 이름 : ${person1.strData}</p>
 <p> 나이 : ${person1.numData}</p>
 <p> 생일 : ${person1.dateData}</p>
-</body>
+</body>	
 </html>
