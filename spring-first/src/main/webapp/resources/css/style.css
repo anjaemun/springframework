@@ -2,8 +2,7 @@
 
 body {
 	background-color: lightgrey;
-	text-align: center;
 }
-
-
-
+.top {
+	background-color: pink;
+}
