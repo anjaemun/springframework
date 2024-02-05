@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=/Users/yed0/Development/STS3_work/.git\:
-GitRepositoriesView.GitDirectories.relative=.git\:
+GitRepositoriesView.GitDirectories=/Users/yed0/Development/STS3_work/.git\:/Users/yed0/git/springframework/.git\:/Users/yed0/Development/STS3_work/springframework/.git\:
+GitRepositoriesView.GitDirectories.relative=.git\:/Users/yed0/git/springframework/.git\:springframework/.git\:
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
