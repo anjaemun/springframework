@@ -31,7 +31,7 @@
 						<div class="movie-item">
 							<a href="detail?m_code=${mitem.m_code}"> 
 								<c:if test="${empty mitem.p_sysname}">
-									<img src="resources/images/no_image.jpg">
+									<img src="resources/images/job.jpeg">
 								</c:if> 
 								<c:if test="${!empty mitem.p_sysname}">
 									<img src="resources/upload/${mitem.p_sysname}">
