@@ -3,5 +3,8 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-	
+	<typeAliases>
+		<typeAlias type="com.icia.movieinfo.dto.MovieDto"
+			alias="movie" />
+	</typeAliases>
 </configuration>

@@ -1,10 +1,13 @@
 package com.icia.movieinfo.dto;
 
+import org.apache.ibatis.type.Alias;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Alias("movie")
 public class MovieDto {
 	private int m_code;
     private String m_name;//제목
