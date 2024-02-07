@@ -1,6 +1,7 @@
 INDEX VERSION 1.4+/Users/yed0/Development/STS3_work/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
 1356952751.index
 176130098.index
+176130098.index
 1960006626.index
 3798419770.index
 3990487640.index

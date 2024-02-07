@@ -160,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="/Users/yed0/Development/STS3_work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/yed0/Development/STS3_work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/spring-jsp02" path="/jsp02" reloadable="true" source="org.eclipse.jst.jee.server:spring-jsp02"/><Context docBase="/Users/yed0/Development/STS3_work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/movieinfo" path="/movieinfo" reloadable="true" source="org.eclipse.jst.jee.server:movieinfo"/></Host>
+      <Context docBase="/Users/yed0/Development/STS3_work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/yed0/Development/STS3_work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/spring-jsp02" path="/jsp02" reloadable="false" source="org.eclipse.jst.jee.server:spring-jsp02"/><Context docBase="/Users/yed0/Development/STS3_work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/movieinfo" path="/movieinfo" reloadable="false" source="org.eclipse.jst.jee.server:movieinfo"/></Host>
     </Engine>
   </Service>
 </Server>
