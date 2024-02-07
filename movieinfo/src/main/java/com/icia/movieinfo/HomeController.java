@@ -1,5 +1,7 @@
 package com.icia.movieinfo;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,14 +16,19 @@ import lombok.extern.slf4j.Slf4j;
 public class HomeController {
 	@Autowired
 	private MovieService mServ;
-
+	
 	@GetMapping("/")
-	public String home(Model model) {
+	public String home(Integer pageNum, 
+						Model model, 
+						HttpSession session) {
 		log.info("home()");
 		
-		String view = mServ.getMovieList(model);
+		String view = mServ.getMovieList(pageNum, model, session);
 		
 		return view;
 	}
+	
+}//class end
 
-}// class end
+
+
