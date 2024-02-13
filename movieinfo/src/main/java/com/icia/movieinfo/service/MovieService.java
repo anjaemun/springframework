@@ -43,7 +43,7 @@ public class MovieService {
 		// 페이징 처리
 		String pageHtml = getPaging(pageNum, listCnt);
 		model.addAttribute("paging", pageHtml);
-
+		session.setAttribute("pageNum", pageNum);
 		return "home";
 	}
 
@@ -121,10 +121,11 @@ public class MovieService {
 		// DB에서 데이터 가져오기
 		MovieDto movie = mDao.selectMovie(m_code);
 		// model에 담기
-		model.addAttribute("movie",movie);
+		model.addAttribute("movie", movie);
 	}
 
-	public String updateMovie(List<MultipartFile> files, MovieDto movie, HttpSession session, RedirectAttributes rttr) throws Exception{
+	public String updateMovie(List<MultipartFile> files, MovieDto movie, HttpSession session, RedirectAttributes rttr)
+			throws Exception {
 		log.info("updateMovie()");
 		String msg = null;
 		String view = null;
@@ -145,7 +146,7 @@ public class MovieService {
 			view = "redirect:updateFrm?m_code=" + movie.getM_code();
 			msg = "수정 실패";
 		}
-		rttr.addFlashAttribute("msg",msg);
+		rttr.addFlashAttribute("msg", msg);
 		return view;
 	}
 
@@ -159,4 +160,27 @@ public class MovieService {
 		}
 	}
 
+	public String deleteMovie(Integer m_code, HttpSession session, RedirectAttributes rttr) {
+		log.info("deleteMovie()");
+		String view = null;
+		String msg = null;
+		// 영화 코드로 파일명 구하기
+		MovieDto movie = mDao.selectMovie(m_code);
+		String poster = movie.getP_sysname(); // 파일명
+		try {
+			if (poster != null) {
+				fileDelete(poster, session);
+			}
+			mDao.deleteMovie(m_code);
+			view = "redirect:/?pageNum=1";
+			msg = "삭제 성공";
+		} catch (Exception e) {
+			e.printStackTrace();
+			view = "redirect:detail?m_code=" + m_code;
+			msg = "삭제 실패";
+		}
+		rttr.addFlashAttribute("msg", msg);
+
+		return view;
+	}
 }// class end

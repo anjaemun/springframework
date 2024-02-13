@@ -194,5 +194,8 @@ Data Update 처리
 
 프로젝트 주제 선정 -> 프로젝트 기획(의도, 벤치마킹, 기능 선정)
  	-> 스토리 보드 작성 -> 잡 리스트(DB 설계) -> 구현 
+ 	
+Data Delete 처리 
+	detail.jsp -> delete(url) Controller -> Service -> Dao
 
 

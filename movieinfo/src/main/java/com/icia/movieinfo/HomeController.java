@@ -66,7 +66,13 @@ public class HomeController {
 	public String updateProc(@RequestPart List<MultipartFile> files, MovieDto movie, HttpSession session,
 			RedirectAttributes rttr) throws Exception {
 		log.info("updateProc()");
-		String view = mServ.updateMovie(files, movie,session, rttr);
-		return view;
+		return mServ.updateMovie(files, movie, session, rttr);
+	}
+
+	// 삭제 데이터 처리
+	@GetMapping("delete")
+	public String deleteMovie(Integer m_code, HttpSession session, RedirectAttributes rttr) {
+		log.info("deleteMovie()");
+		return mServ.deleteMovie(m_code, session, rttr);
 	}
 }// class end
