@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -65,7 +64,7 @@ public class HomeController {
 	// 수정 데이터 처리
 	@PostMapping("updateProc")
 	public String updateProc(@RequestPart List<MultipartFile> files, MovieDto movie, HttpSession session,
-			RedirectAttributes rttr) {
+			RedirectAttributes rttr) throws Exception {
 		log.info("updateProc()");
 		String view = mServ.updateMovie(files, movie,session, rttr);
 		return view;

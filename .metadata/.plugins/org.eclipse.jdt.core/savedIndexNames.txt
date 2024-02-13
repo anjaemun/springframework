@@ -4,7 +4,6 @@ INDEX VERSION 1.131+/Users/yed0/Development/STS3_work/.metadata/.plugins/org.ecl
 1141061991.index
 3183567508.index
 2925838944.index
-3798419770.index
 2050104758.index
 3990487640.index
 3090518090.index

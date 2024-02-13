@@ -30,19 +30,14 @@ public class MovieService {
 	// 영화 목록을 가져와서 컨트롤러에 넘기는 메소드
 	public String getMovieList(Integer pageNum, Model model, HttpSession session) {
 		log.info("getMovieList()");
-
 		if (pageNum == null) {
 			pageNum = 1;// 처음에 사이트가 열릴 때 첫페이지가 되도록 설정.
 		}
-
 		int listCnt = 5;// 페이지당 보여질 콘텐츠 개수
-
 		Map<String, Integer> pMap = new HashMap<String, Integer>();
 		pMap.put("pageNum", (pageNum - 1) * listCnt);
 		pMap.put("listCnt", listCnt);
-
 		List<MovieDto> mList = mDao.getMovieList(pMap);
-
 		model.addAttribute("mList", mList);
 
 		// 페이징 처리
@@ -126,10 +121,10 @@ public class MovieService {
 		// DB에서 데이터 가져오기
 		MovieDto movie = mDao.selectMovie(m_code);
 		// model에 담기
-		model.addAttribute("movie", movie);
+		model.addAttribute("movie",movie);
 	}
 
-	public String updateMovie(List<MultipartFile> files, MovieDto movie, HttpSession session, RedirectAttributes rttr) {
+	public String updateMovie(List<MultipartFile> files, MovieDto movie, HttpSession session, RedirectAttributes rttr) throws Exception{
 		log.info("updateMovie()");
 		String msg = null;
 		String view = null;
@@ -137,13 +132,31 @@ public class MovieService {
 		try {
 			if (!files.get(0).isEmpty()) {
 				fileUpload(files, session, movie);
+				// 기존 파일 삭제(포스터 삭제)
+				if (poster != null) {
+					fileDelete(poster, session);
+				}
 			}
 			mDao.updateMovie(movie);
-
-			// 기존 파일 삭제(포스터 삭제)
+			view = "redirect:detail?m_code=" + movie.getM_code();
+			msg = "수정 성공";
 		} catch (Exception e) {
-
+			e.printStackTrace();
+			view = "redirect:updateFrm?m_code=" + movie.getM_code();
+			msg = "수정 실패";
 		}
+		rttr.addFlashAttribute("msg",msg);
 		return view;
 	}
+
+	private void fileDelete(String poster, HttpSession session) throws Exception {
+		log.info("fileDelete()");
+		String realPath = session.getServletContext().getRealPath("/");
+		realPath += "resources/upload/" + poster;
+		File file = new File(realPath);
+		if (file.exists()) {
+			file.delete();
+		}
+	}
+
 }// class end
