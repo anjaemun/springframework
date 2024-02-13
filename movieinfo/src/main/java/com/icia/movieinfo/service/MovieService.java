@@ -67,15 +67,12 @@ public class MovieService {
 		return pageHtml;
 	}
 
-	public String insertMovie(List<MultipartFile> files, 
-								MovieDto movie, 
-								HttpSession session, 
-								RedirectAttributes rttr) {
+	public String insertMovie(List<MultipartFile> files, MovieDto movie, HttpSession session, RedirectAttributes rttr) {
 		log.info("insertMovie()");
 		String msg = null; // DB 저장 성공 / 실패 관련 메세지 저장
 		String view = null; // 대상 페이지 지정 변수
 		String upFile = files.get(0).getOriginalFilename();
-		
+
 		// 업로드하는 파일의 이름을 추출.
 		try {
 			if (!upFile.equals("")) {
@@ -94,35 +91,59 @@ public class MovieService {
 		return view;
 	}
 
-	private void fileUpload(List<MultipartFile> files, 
-							HttpSession session, 
-							MovieDto movie) throws Exception {	
+	private void fileUpload(List<MultipartFile> files, HttpSession session, MovieDto movie) throws Exception {
 		log.info("fileUpload()");
-		
+
 		String sysname = null; // 변경할 파일 명
 		String oriname = null; // 원래 파일 명
 		String realPath = session.getServletContext().getRealPath("/");
-		
+
 		log.info(realPath);
-		
+
 		realPath += "resources/upload/";
 		File folder = new File(realPath);
-		
-		// isDirectory() : 해당 이름이 폴더가 아니거나 존재하지 않으면 false 리턴 
+
+		// isDirectory() : 해당 이름이 폴더가 아니거나 존재하지 않으면 false 리턴
 		if (folder.isDirectory() == false) {
 			folder.mkdir(); // 폴더 생성 메서드
 		}
-		
+
 		MultipartFile mf = files.get(0);
 		oriname = mf.getOriginalFilename();
-		
+
 		sysname = System.currentTimeMillis() + oriname.substring(oriname.lastIndexOf("."));
-		
+
 		File file = new File(realPath + sysname);
-		
+
 		mf.transferTo(file); // 하드디스크(경로상의 폴더)에 저장
 		movie.setP_sysname(sysname);
-		
+
 	}
 
-}
+	// 상세보기 처리 메서드(수정 처리에서도 활용)
+	public void getMovie(Integer m_code, Model model) {
+		log.info("getMovie()");
+		// DB에서 데이터 가져오기
+		MovieDto movie = mDao.selectMovie(m_code);
+		// model에 담기
+		model.addAttribute("movie", movie);
+	}
+
+	public String updateMovie(List<MultipartFile> files, MovieDto movie, HttpSession session, RedirectAttributes rttr) {
+		log.info("updateMovie()");
+		String msg = null;
+		String view = null;
+		String poster = movie.getP_sysname(); // 기존 파일 이름
+		try {
+			if (!files.get(0).isEmpty()) {
+				fileUpload(files, session, movie);
+			}
+			mDao.updateMovie(movie);
+
+			// 기존 파일 삭제(포스터 삭제)
+		} catch (Exception e) {
+
+		}
+		return view;
+	}
+}// class end

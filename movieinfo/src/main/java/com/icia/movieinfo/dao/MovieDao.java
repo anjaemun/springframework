@@ -10,13 +10,21 @@ import com.icia.movieinfo.dto.MovieDto;
 public interface MovieDao {
 	//영화 목록 가져오기
 	List<MovieDto> getMovieList(Map<String, Integer> pMap);
-	
-	//전체 영화 개수 구하기
+
+	// 전체 영화 개수 구하기
 	@Select("SELECT count(*) FROM movietbl")
 	int cntMovie();
-	
-	// 영화 정보 입력 
+
+	// 영화 정보 입력
 	void insertMovie(MovieDto movie);
-}
+	
+	// 영화 정보 상세 보기
+	MovieDto selectMovie(Integer m_code);
+	
+	// 영화 정보 수정 
+	void updateMovie(MovieDto movie);
+	
+	
+}// interface end
 
 //java <-> Mybatis(xml)
